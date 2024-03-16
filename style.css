@@ -1,22 +1,45 @@
-nav{
-    position: fixed;
-    float:left;
-    width: 120px;
-    height: 100%;
+body {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "nav main aside"
+        "footer footer footer";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 10px;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-aside{
-    float:right;
-    width: 200px;
-    height: 100%;
+header {
+    grid-area: header;
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
 }
 
-article{
-    margin-bottom: 5vh;
-    padding-left:10px;
-    padding-right: 10px;
-    margin-left:290px ;
-    margin-right: 290px;
-    height: auto;
-    opacity: 75%;
-    line-height: 30px;}
+nav {
+    grid-area: nav;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+main {
+    grid-area: main;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+aside {
+    grid-area: aside;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+}
