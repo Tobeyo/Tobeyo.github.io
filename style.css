@@ -57,29 +57,19 @@ p {
     text-align: center;
 }
 
-/*
-nav{
+.auth {
+    font-family: 'JetBrains Mono', monospace;
+    color: #000000;
+    text-align: center;
+}
+
+#f{
     position: fixed;
-    float:left;
-    width: 120px;
-    height: 100%;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top:95vh;
+    text-align: center;
+
+
 }
-
-aside{
-    float:right;
-    width: 200px;
-    height: 100%;
-}
-
-article{
-    margin-bottom: 5vh;
-    padding-left:10px;
-    padding-right: 10px;
-    margin-left:290px ;
-    margin-right: 290px;
-    height: auto;
-    opacity: 75%;
-    line-height: 30px;
-    }
-
- */

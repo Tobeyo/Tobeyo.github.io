@@ -5,20 +5,17 @@
 </head>
 <body>
 <div>
-    <!-- Ein Eingabefeld vom Typ "password", das das Passwort des Benutzers aufnimmt -->
-    <input id="i" type="password" placeholder="Password" onchange="authorize()">
-    <!-- Ein Button, der die Funktion "authorize()" aufruft, wenn er geklickt wird -->
-    <input type="submit" value="Submit" onclick="authorize()">
+
+    <p class="auth">Ich bin kein Roboter</p>
+
+    <input class="auth" id="i" type="radio" placeholder="Ich bin kein Roboter" onchange="authorize()">
+
+
 </div>
 <h1 id="p"></h1>
 <script>
     function authorize() {
-        // Das Passwort des Benutzers wird aus dem Eingabefeld geholt
-        let passw = document.getElementById("i").value
-        // Wenn das Passwort "t0b1" ist, wird ein Link zur Download-Seite angezeigt
-        if (passw == "t0b1"){
-            document.getElementById("p").innerHTML = '<a href="downloads.html">Downloads</a>'
-        }
+        document.getElementById("p").innerHTML = '<a href="downloads.html">Downloads</a>'
     }
 </script>
 </body>
