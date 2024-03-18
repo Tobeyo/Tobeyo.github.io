@@ -1,22 +1,69 @@
 <html>
+
 <head>
     <meta charset="utf-8">
-    <title>Tobis Authentification</title>
+    <title>Tobis Website</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        article {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+
 </head>
+
+
 <body>
-<div>
 
-    <p class="auth">Ich bin kein Roboter</p>
+<nav>
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <br>
+        <li><a href="../old/webprojekt/webindex.html">Mein WebProjekt 2022/23</a></li>
+        <br>
+        <li><a href="../old/tictactoe/tictactoe.html">TicTacToe</a></li>
+        <br>
+        <li><a href="auth.html">Meine Projekte zum Downloaden</a></li>
+    </ul>
 
-    <input class="auth" id="i" type="radio" placeholder="Ich bin kein Roboter" onchange="authorize()">
 
 
-</div>
-<h1 id="p"></h1>
+</nav>
+
+
+<aside>
+
+
+</aside>
+
+
+<article>
+
+    <ul>
+        <img style="" src="../pictures/macos-sonoma-6016x6016-11578.jpg" height="300px" width="300px">
+        <br>
+        <a href="../pictures/macos-sonoma-6016x6016-11578.jpg" download>Mein Hintergrundbild</a>
+    </ul>
+    <br><br><br>
+    <ul>
+
+        <br>
+        <a href="Rezept%20Buch.zip" download>Meine RezeptbuchApp</a>
+    </ul>
+
+
+</article>
+
 <script>
-    function authorize() {
-        document.getElementById("p").innerHTML = '<a href="downloads.html">Downloads</a>'
-    }
+
 </script>
+
+
 </body>
+
+
 </html>
