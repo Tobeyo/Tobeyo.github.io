@@ -1,7 +1,1 @@
-curl --location --insecure --request POST 'https://api. openai.com/v1/chat/completions' \
---header 'Authorization: Bearer sk-proj-MbCkhiBo665VVwjahWzvAmH-4rbRrb1nylkhE8j4zclaT1fR06k0tVztpXTGJh6EasZ-La9n5yT3BlbkFJR7Mg952FMT2rRvFztGQTQkHhWICZcWor8CTV0cf_wwf6mAiTihJLkCROMRpUN7ezdKvnq1p6' \
---header 'Content-Type: application/json' \
---data-raw '{
- "model": "gpt-3.5-turbo",
- "messages": [{"role": "user", "content": "What is the OpenAI mission?"}]
-}'
+curl --location --request POST "https://api.openai.com/v1/chat/completions" --header "Authorization: Bearer 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" --header "Content-Type: application/json" --data-raw "{"model": "gpt-3.5-turbo", "messages": [{"role": "user", "content": "What is the OpenAI mission?"}]}"
