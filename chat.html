@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat System</title>
+</head>
+<body>
+    <div id="chat">
+        <!-- Nachrichten erscheinen hier -->
+    </div>
+    <form id="messageForm">
+        <input type="text" id="messageInput" placeholder="Nachricht eingeben" required>
+        <button type="submit">Senden</button>
+    </form>
+
+    <script>
+        const apiUrl = 'https://tobines.site/backend.js'; 
+
+        async function fetchMessages() {
+            const response = await fetch(apiUrl);
+            const messages = await response.json();
+            const chatDiv = document.getElementById('chat');
+            chatDiv.innerHTML = messages.map(msg => `<p>${msg}</p>`).join('');
+        }
+
+        document.getElementById('messageForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = document.getElementById('messageInput').value;
+            await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message })
+            });
+            document.getElementById('messageInput').value = '';
+            fetchMessages();
+        });
+
+        setInterval(fetchMessages, 3000);
+        fetchMessages();
+    </script>
+</body>
+</html>
