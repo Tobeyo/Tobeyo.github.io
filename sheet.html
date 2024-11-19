@@ -1,0 +1,59 @@
+<html>
+
+
+
+# Berechnung des Erfolgsgrades basierend auf der Durchschnittsnote
+merged["erfolg"] = merged["gradeAvg"].apply(get_erfolg)
+
+# Ausreißer basierend auf dem Alter (Standardabweichung)
+mean_age = merged["Alter"].mean()
+std_age = merged["Alter"].std()
+lower_bound = mean_age - 2 * std_age
+upper_bound = mean_age + 2 * std_age
+merged = merged[(merged["Alter"] >= lower_bound) & (merged["Alter"] <= upper_bound)]
+
+# Zusammenführung aller relevanten DataFrames
+merged = (
+    students
+    .merge(grades, on="StudentID")
+    .merge(details, on="StudentID")
+    .merge(extracurricular_activities, on="StudentID")
+)
+
+# Zusammenführen aller Aktivitäten aus mehreren Spalten
+all_activities = pd.concat([df['Activity1'], df['Activity2']], ignore_index=True)
+
+# Zählen der Vorkommen jeder Aktivität
+counts = all_activities.groupby("activities").size()
+
+# Noten auf den Bereich 0-100 begrenzen und fehlende Werte füllen
+grades[subjects] = grades[subjects].clip(lower=0, upper=100)
+grades[subjects] = grades[subjects].fillna(0)
+
+# Zeilen entfernen, bei denen StudentID fehlt
+grades = grades.dropna(subset=["StudentID"])
+
+# Filterung der Noten für spezifische Fächer (falls Bedingungen aktiviert)
+grades = grades[
+    (grades["Math"] <= 100) & (grades["Math"] >= 0) &
+    (grades["English"] <= 100) & (grades["English"] >= 0) &
+    (grades["Science"] <= 100) & (grades["Science"] >= 0)
+]
+
+# Filtern der Studenten nach gültigen Geschlechterangaben
+students = students[students['Geschlecht'].isin(['Weiblich', 'Männlich'])]
+
+# Doppelte Einträge entfernen
+students = students.drop_duplicates()
+
+# Sicherstellen, dass der Name mindestens ein Leerzeichen enthält
+students = students[students["Name"].str.contains(" ")]
+
+# Zeilen entfernen, bei denen Werte fehlen
+students = students.dropna(subset=["StudentID"])
+
+
+
+
+
+</html>
