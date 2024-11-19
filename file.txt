@@ -1,0 +1,34 @@
+String filePath = "datei.txt";
+        String outputPath = "ausgabe.txt";
+
+        // 1. Zeilenweise Einlesen
+        System.out.println("Zeilenweise Einlesen:");
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // 2. Datei als Ganzes Einlesen
+        System.out.println("\nDatei als Ganzes Einlesen:");
+        try {
+            String content = Files.readString(Paths.get(filePath));
+            System.out.println(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // 3. Schreiben in eine Datei
+        System.out.println("\nSchreiben in eine Datei:");
+        String textToWrite = "Das ist ein Test.\nNeue Zeile hinzufügen!";
+        try {
+            Files.writeString(Paths.get(outputPath), textToWrite);
+            System.out.println("Text erfolgreich in die Datei geschrieben: " + outputPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
+

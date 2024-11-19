@@ -1,0 +1,91 @@
+package org.example;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        List<Person> persons = new ArrayList<>();
+
+        persons.add(new Person("Ramin", 18, "example@email.com"));
+        persons.add(new Person("Max", 17, "exampleMax@email.com"));
+        persons.add(new Person("Davud", 17, "davudExample@email.com"));
+
+        try{
+            ObjectMapper mapper = new ObjectMapper();
+            String json = mapper.writeValueAsString(persons);
+
+            FileWriter jsonWriter = new FileWriter("persons3.json");
+            jsonWriter.write(json);
+            jsonWriter.close();
+
+            List<Person>newPersons = Arrays.asList(mapper.readValue(new File("persons3.json"),Person[].class));
+
+            for (int i = 0; i < newPersons.size(); i++){
+                System.out.println(newPersons.get(i).name+","+newPersons.get(i).age+","+newPersons.get(i).email);
+            }
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+
+
+
+
+
+
+
+package org.example;
+
+public class Person {
+    public String name;
+    public int age;
+    public String email;
+
+    public Person(String name, int age, String email){
+        this.name = name;
+        this.age = age;
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Person(){
+
+    }
+}
