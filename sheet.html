@@ -2,6 +2,12 @@
 
 
 
+
+
+
+
+
+
 # Berechnung des Erfolgsgrades basierend auf der Durchschnittsnote
 merged["erfolg"] = merged["gradeAvg"].apply(get_erfolg)
 
@@ -51,6 +57,11 @@ students = students[students["Name"].str.contains(" ")]
 
 # Zeilen entfernen, bei denen Werte fehlen
 students = students.dropna(subset=["StudentID"])
+
+
+
+
+
 
 
 
